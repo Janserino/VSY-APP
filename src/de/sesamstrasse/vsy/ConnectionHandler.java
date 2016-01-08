@@ -1,6 +1,8 @@
 package de.sesamstrasse.vsy;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +18,8 @@ import java.net.URL;
  */
 public class ConnectionHandler {
 
+    //TODO: Überprüfen...
+
     private static final String ENDPOINT_1 = "127.0.0.1:8081/",
                                 ENDPOINT_2 = "127.0.0.1:8082/",
                                 CREATE_RESTAURANT = "createRestaurant",
@@ -24,14 +28,34 @@ public class ConnectionHandler {
 
 
     public static JSONArray getRestaurants() {
-        return null;
+        //TODO: Aufbau payload und Übergabe an httpRequestor
+        //TODO: Rückgabe zu JSON konvertieren
+        String result = httpRequestor("",GET_RESTAURANT);
+        try {
+            return new JSONArray(result);
+        }
+        catch (JSONException e){}
+        return new JSONArray();
     }
 
-    public static JSONArray addRestaurant() {
-        return null;
+    public static JSONArray addRestaurant(String name) {
+        JSONObject restaurant = new JSONObject();
+        try{
+            restaurant.put("name",name);
+            return new JSONArray(httpRequestor(restaurant.toString(),CREATE_RESTAURANT));
+        }
+        catch (JSONException e){}
+            return getRestaurants();
     }
 
-    public static JSONArray rateRestaurant(){
+    public static JSONArray rateRestaurant(short rating, long id){
+        JSONObject restaurant = new JSONObject();
+        try{
+            restaurant.put("id", id);
+            restaurant.put("bewertung", rating);
+            return new JSONArray(httpRequestor(restaurant.toString(),RATE_RESTAURANT));
+        }
+        catch (JSONException e){}
         return null;
     }
 
