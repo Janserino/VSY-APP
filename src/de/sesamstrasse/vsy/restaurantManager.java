@@ -3,6 +3,7 @@ package de.sesamstrasse.vsy;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 import org.w3c.dom.Text;
 
@@ -21,8 +22,8 @@ public class restaurantManager extends Activity {
 
     public void saveRestaurantButtonClicked(View view){
         try{
-            final Text myText=(Text)findViewById(R.id.editText3);
-            name = myText.getWholeText();
+            final EditText myText=(EditText)findViewById(R.id.editText3);
+            name = myText.getText().toString();
             //TODO: Schreiben des Namens an den Webservice
             //TODO: Zurückkommende ArrayList an Hauptseite weitergeben
             Toast.makeText(restaurantManager.this, "Restaurant " + name + " erfolgreich angelegt", Toast.LENGTH_SHORT).show();
