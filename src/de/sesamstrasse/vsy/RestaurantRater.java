@@ -27,7 +27,8 @@ public class RestaurantRater extends Activity {
         try{
             final RatingBar newRating = (RatingBar)findViewById(R.id.RatingBar1);
             rating = newRating.getRating();
-            ConnectionHandler.rateRestaurant(rating, sel_id);
+            short short_rate = ((short) rating);
+            ConnectionHandler.rateRestaurant(short_rate, sel_id);
             Toast.makeText(RestaurantRater.this, "Restaurant" + selected.name + "bewertet!");
         }
         catch (ExecutionException e) {
