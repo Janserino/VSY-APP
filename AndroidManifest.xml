@@ -13,5 +13,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".restaurantManager"/>
+        <activity android:name=".RestaurantRater" android:label="Restaurant bewerten"/>
     </application>
 </manifest>

@@ -3,4 +3,6 @@
     <string name="app_name">Restaurant Bewerter</string>
     <string name="button_new">Restaurant hinzufügen</string>
     <string name="lbl_name">Restaurant\nName: </string>
+    <string name="button_save_rating">Bewertung speichern</string>
+    <string name="lbl_restaurant">Restaurant:</string>
 </resources>
