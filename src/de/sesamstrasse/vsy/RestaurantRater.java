@@ -15,14 +15,16 @@ import java.util.concurrent.ExecutionException;
 
 public class RestaurantRater extends Activity {
     static public long sel_id;
-    private float rating;
+    public float rating;
+    Restaurant restaurant = new Restaurant();
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState, Restaurant McBeispiel) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.restaurant_rater);
+        restaurant = McBeispiel;
     }
-    public void saveRestaurantRatingButtonClicked (Restaurant restaurant){
+    public void saveRestaurantRatingButtonClicked (){
         try{
             final RatingBar newRating = (RatingBar)findViewById(R.id.RatingBar1);
             rating = newRating.getRating();
