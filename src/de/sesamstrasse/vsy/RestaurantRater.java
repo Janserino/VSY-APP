@@ -15,7 +15,6 @@ import java.util.concurrent.ExecutionException;
 
 public class RestaurantRater extends Activity {
     static public long sel_id;
-
     private float rating;
 
     @Override
@@ -23,15 +22,15 @@ public class RestaurantRater extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.restaurant_rater);
     }
-    public void saveRestaurantRatingButtonClicked (View view){
+    public void saveRestaurantRatingButtonClicked (Restaurant restaurant){
         try{
             final RatingBar newRating = (RatingBar)findViewById(R.id.RatingBar1);
             rating = newRating.getRating();
             short short_rate = ((short) rating);
             ConnectionHandler.rateRestaurant(short_rate, sel_id);
-            Toast.makeText(RestaurantRater.this, "Restaurant" + selected.name + "bewertet!");
+            Toast.makeText(RestaurantRater.this, "Restaurant" + restaurant.name + "bewertet!", Toast.LENGTH_SHORT).show();
         }
-        catch (ExecutionException e) {
+        catch (Exception e) {
             Toast.makeText(RestaurantRater.this, "Fehler bei der Bewertung", Toast.LENGTH_SHORT).show();
         }
     }
